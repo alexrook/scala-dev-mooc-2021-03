@@ -116,7 +116,7 @@ object hof {
   // Follow type implementation
   def partial[A, B, C](a: A, f: (A, B) => C): B => C = (b: B) => f(a, b) // B => C
 
-  def sum(x: Int, y: Int): Int = ???
+  def sum(x: Int, y: Int): Int = x + y
 
   val r: Int => Int = partial(1, sum)
 
