@@ -6,7 +6,6 @@ import java.util.UUID
 import scala.annotation.tailrec
 import scala.util.control.NonFatal
 
-
 /**
  * referential transparency
  */
@@ -201,7 +200,8 @@ object opt {
    * реализовать метод orElse который будет возвращать другой Option, если данный пустой
    */
 
-  def orElse[T](left: Option[T], right: Option[T]): Option[T] = if (left.nonEmpty) left else right
+  def orElse[A, B >: A](left: Option[A], right: Option[B]): Option[B] =
+    if (left.nonEmpty) left else right
 
   /**
    *
@@ -289,5 +289,15 @@ object testOpt extends App {
   assert(filter(opt2, (_: String) => true) == opt2, "filter should return Some for opt2")
   assert(filter(opt2, (s: String) => s.equals("not our case")).isEmpty,
     "The filter should return an empty result if the predicate is not satisfied")
+
+  trait Vehicle
+
+  class Car extends Vehicle
+
+  class Formula1 extends Car
+
+  val r: Option[Car] = orElse(Option.None.asInstanceOf[Option[Formula1]], Option.Some(new Car))
+  println(r)
+
 
 }
