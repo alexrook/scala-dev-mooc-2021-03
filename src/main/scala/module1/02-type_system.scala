@@ -1,7 +1,5 @@
 package module1
 
-import zio.{IO, ZIO}
-
 import java.io.Closeable
 
 object type_system {
