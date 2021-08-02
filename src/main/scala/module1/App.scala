@@ -16,13 +16,12 @@ import zio.{Fiber, IO, Task, UIO, URIO, ZIO}
 import scala.concurrent.Future
 import scala.language.{existentials, implicitConversions, postfixOps}
 import scala.util.Try
+import zio.console
 
 object App {
 
   def main(args: Array[String]): Unit = {
 
-     zio.Runtime.default.unsafeRun(zioDS.promises.completeWith.flatMap(r => putStrLn(r.toString())))
-
-    // Thread.sleep(5000)
+      
   }
 }
